@@ -6,3 +6,13 @@ body{
     background-size: cover;
 }
 
+.img_logo{
+    height: 100px;
+    width: 100px;
+}
+
+.centrar_card{
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
