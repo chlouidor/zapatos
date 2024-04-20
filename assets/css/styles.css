@@ -6,6 +6,12 @@ body{
     background-size: cover;
 }
 
+
+*{
+
+    margin: 0 0;
+}
+
 .img_logo{
     height: 100px;
     width: 100px;
@@ -30,10 +36,10 @@ body{
     justify-content: space-evenly;
     align-items: center;
     background-color: white;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 50px;
-    border-radius: 15px;
+    border-radius: .9rem;
 }
 
 .contenido-compra{
