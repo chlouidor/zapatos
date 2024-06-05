@@ -1,3 +1,11 @@
+main {
+    flex: 1; /* Esto asegura que el contenido principal tome el espacio disponible */
+    padding: 20px; /* Espacio deseado entre el contenido y el footer */
+}
+
+
+
+
 body{
     background-image: url(../img/fondo.webp);
     background-repeat: no-repeat;
@@ -11,6 +19,13 @@ body{
 
     margin: 0 0;
 }
+
+.img{
+    width: 100%;
+    height: auto;
+}
+
+
 
 .img_logo{
     height: 100px;
@@ -45,4 +60,29 @@ body{
 .contenido-compra{
     margin-left: 10px;
 }
+
+
+
+
+.footer{
+    background-color: rgb(44, 52, 52);
+    font-family: "Nunito", sans-serif;
+    text-transform: capitalize;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    margin-top: 50px;
+}
+.container-footer{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.footer-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
 
