@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zapatillas san antonio - Registrar</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/login.css" />
+    <link rel="icon" href="./assent/img/logo pagina.png" />
+</head>
+<body>
+    <div class="formulario">
+        <h1>Crear Cuenta</h1>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo Electrónico:</label>
+            <input
+                id="email"
+                type="email"
+                class="form-control"
+                placeholder="Ingrese su correo"
+                required
+            />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña:</label>
+            <input
+                id="password"
+                type="password"
+                class="form-control"
+                placeholder="Ingrese su contraseña"
+                required
+            />
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirmar Contraseña:</label>
+            <input
+                id="confirmPassword"
+                type="password"
+                class="form-control"
+                placeholder="Confirme su contraseña"
+                required
+            />
+        </div>
+
+        <input id="registerButton" type="button" class="btn btn-primary w-100" value="Registrarse" />
+        
+        <div id="message" class="mt-3"></div>
+
+        <div class="registrarse mt-3">
+            <p>¿Ya tienes cuenta? <a href="./login.html">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('registerButton').addEventListener('click', () => {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const messageDiv = document.getElementById('message');
+
+            // Limpiar mensaje
+            messageDiv.textContent = '';
+            messageDiv.classList.remove('text-danger', 'text-success');
+
+            if (!email || !password || !confirmPassword) {
+                messageDiv.textContent = 'Por favor, complete todos los campos.';
+                messageDiv.classList.add('text-danger');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                messageDiv.textContent = 'Las contraseñas no coinciden.';
+                messageDiv.classList.add('text-danger');
+                return;
+            }
+
+            // Obtener usuarios existentes del localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Verificar si el correo ya está registrado
+            const userExists = users.some(user => user.email === email);
+            if (userExists) {
+                messageDiv.textContent = 'El correo ya está registrado.';
+                messageDiv.classList.add('text-danger');
+                return;
+            }
+
+            // Guardar nuevo usuario
+            users.push({ email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            messageDiv.textContent = 'Registro exitoso. Redirigiendo al inicio de sesión...';
+            messageDiv.classList.add('text-success');
+
+            // Limpiar campos
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('confirmPassword').value = '';
+
+            // Redirigir luego de 2 segundos
+            setTimeout(() => {
+                window.location.href = './login.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
